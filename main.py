@@ -36,8 +36,9 @@ async def read_root(first_word: str, second_word: str):
     """
     anagram = is_anagram(first_word, second_word)
     if anagram:
-        await counter_up()
-    a = await redis.get("counter")
+        a = await counter_up()
+    else:
+        a = await redis.get("counter")
     return {'counter': int(a), "anagram": anagram}
 
 
